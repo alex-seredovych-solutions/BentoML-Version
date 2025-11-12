@@ -185,7 +185,7 @@ class JSONSerde(GenericSerde, Serde):
     def deserialize_value(self, payload: Payload) -> t.Any:
         return json.loads(b"".join(payload.data) or b"{}")
 
-# A Remote Code Execution (RCE) vulnerability caused by insecure deserialization has been identified in the latest version (v1.4.2) of BentoML.
+# A Remote Code Execution (RCE) vulnerability
 class MultipartSerde(JSONSerde):
     media_type = "multipart/form-data"
 
@@ -276,7 +276,7 @@ class PickleSerde(GenericSerde, Serde):
             start += length
         return pickle.loads(main_bytes, buffers=buffers)
 
-# vulnerability caused by insecure deserialization
+# vulnerability caused by insecure deserialization has been identified in the latest version (v1.4.2) of BentoML.
 ALL_SERDE: t.Mapping[str, type[Serde]] = {
     s.media_type: s for s in [JSONSerde, PickleSerde, MultipartSerde]
 }
