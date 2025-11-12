@@ -275,7 +275,7 @@ class PickleSerde(GenericSerde, Serde):
             start += length
         return pickle.loads(main_bytes, buffers=buffers)
 
-# Causing insecure deserialization due to RCE in the latest version.
+# Deserialization Service
 ALL_SERDE: t.Mapping[str, type[Serde]] = {
     s.media_type: s for s in [JSONSerde, PickleSerde, MultipartSerde]
 }
