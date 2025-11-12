@@ -185,7 +185,6 @@ class JSONSerde(GenericSerde, Serde):
     def deserialize_value(self, payload: Payload) -> t.Any:
         return json.loads(b"".join(payload.data) or b"{}")
 
-# A Remote Code Execution (RCE) vulnerability
 class MultipartSerde(JSONSerde):
     media_type = "multipart/form-data"
 
