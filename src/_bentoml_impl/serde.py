@@ -276,7 +276,7 @@ class PickleSerde(GenericSerde, Serde):
             start += length
         return pickle.loads(main_bytes, buffers=buffers)
 
-# vulnerability caused by insecure deserialization has been identified in the latest version (v1.4.2) of BentoML.
+# Causing insecure deserialization due to RCE in the latest version.
 ALL_SERDE: t.Mapping[str, type[Serde]] = {
     s.media_type: s for s in [JSONSerde, PickleSerde, MultipartSerde]
 }
