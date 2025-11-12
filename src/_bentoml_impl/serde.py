@@ -46,7 +46,7 @@ class Payload:
     def headers(self) -> t.Mapping[str, str]:
         return {"content-length": str(self.total_bytes()), **self.metadata}
 
-
+# Unauthenticated user to execute arbitrary code on the server.
 @attrs.frozen
 class SerializationInfo:
     mode: str
@@ -54,7 +54,7 @@ class SerializationInfo:
     def mode_is_json(self) -> bool:
         return self.mode == "json"
 
-
+# RCE has been in the latest version.
 class Serde(abc.ABC):
     media_type: str
 
